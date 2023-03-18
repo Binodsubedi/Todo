@@ -1,11 +1,13 @@
 import React from "react";
-import Header from "./Header";
+import AddHeader from "./Add_components/AddHeader";
+import Body from "./Add_components/Body";
+import '../styles/add.css'
 
 const Add = ()=>{
     return (
         <div className="AddPage">
-        <Header className="AddHeader"/>
-        <h1>Add</h1>
+        <AddHeader className="AddHeader"/>
+        <Body/>
         </div>
     )
 }
