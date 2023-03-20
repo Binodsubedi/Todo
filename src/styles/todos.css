@@ -1,0 +1,96 @@
+*,
+*::before,
+*::after{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.TodoPage{
+    display: grid;
+    display: grid;
+    grid-template-columns: [container-start]1fr[center-start]repeat(6, [col-start] minmax(min-content, 16.67rem)[col-end]) [center-end] 1fr [container-end];
+    grid-template-rows: 12vh minmax(88vh, min-content);
+    background-color: azure;
+}
+
+.TodoHeader{
+    grid-column: container-start / container-end;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(157, 157, 65);
+}
+
+.cards_container{
+    grid-column: container-start / container-end;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 30px;
+}
+
+.todo_internal_container{
+    position: relative;
+    margin-top:20px;
+    margin-bottom: 20px;
+}
+
+.main_container{
+    min-width: 350px;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    border: 2px solid sandybrown;
+    border-radius: 4px;
+
+}
+
+.title_container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid salmon;
+    padding: 5px 0;
+}
+
+.tasks_and_checks_container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-left: 10px;
+}
+
+.task_check{
+    display: flex;
+    width: 100%;
+    min-height: 25px;
+    justify-content: flex-start;
+    align-items: center;
+    border-bottom: 2px solid sandybrown;
+    padding: 5px 0;
+}
+
+.task_check button{
+    margin-left: 10px;
+}
+
+.summary_button_container{
+
+    width: 100%;
+    min-height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;   
+}
+
+.summary_button_container button{
+    padding: 5px;
+    border-radius: 3px;
+}
