@@ -25,13 +25,14 @@ exports.createTodo = async(req,res)=>{
     try{
 
         // console.log(req)
-        console.log(req.body)
 
         const created = await Todos.create(req.body);
+
         res.status(200).json({
             status:'success',
             data: created
         })
+
     } catch(err){
 
         res.status(400).json({
@@ -41,4 +42,43 @@ exports.createTodo = async(req,res)=>{
 
     }
 
+}
+
+exports.checkFinished = async (req,res)=>{
+
+    try{
+
+        // console.log(req.body)
+
+        const {parent_id, id} = req.body;
+
+        
+        const finishedOne = await Todos.find({_id:parent_id})
+        
+        finishedOne[0].tasks.map((el)=>{
+            if(el._id == id){
+                el.finished = true;
+                el.finished_date= Date.now().toString()
+            }
+        })
+        
+        // console.log(finishedOne)
+        
+        await Todos.findOneAndUpdate({_id:parent_id}, finishedOne[0])
+        
+        
+        res.status(200).json({
+            status:'success'
+        })
+
+    }catch(err){
+        // console.log(err)
+
+        res.status(400).json({
+            status:'fail',
+            message:err.message
+        })
+
+
+    }
 }

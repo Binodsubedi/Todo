@@ -14,8 +14,7 @@ const todoSchema = new mongoose.Schema({
         {
             task: {
                 type: String,
-                required: [true,"Please provide a specific task"],
-                unique: [true,"Tasks should be unique"]
+                required: [true,"Please provide a specific task"]
             },
             finished: {
                 type: Boolean,
