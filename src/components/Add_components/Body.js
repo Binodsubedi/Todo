@@ -38,8 +38,7 @@ const Body = ()=>{
             tasks:tasks_arrangement
         }
 
-        await backend.post('/create',body)
-        // console.log(response)
+        const response = await backend.post('/create',body)
 
     }catch(err){
 
