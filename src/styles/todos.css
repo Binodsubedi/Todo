@@ -35,6 +35,7 @@
     position: relative;
     margin-top:20px;
     margin-bottom: 20px;
+    /* display: flex; */
 }
 
 .main_container{
@@ -93,4 +94,26 @@
 .summary_button_container button{
     padding: 5px;
     border-radius: 3px;
+}
+
+
+.hide{
+    display: none;
+}
+
+.show{
+    position: absolute;
+    top:0%;
+    font-size: 16px;
+    left: 26%;
+    min-width: 120px;
+    min-height: 80px;
+    border: 2px solid slategray;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: aquamarine;
+    border-radius: 5px;
 }

@@ -13,6 +13,33 @@ const Cards = ({fetchTodos, todos})=>{
     },[])
 
 
+    const hide_show_toggler =  (e)=>{
+
+        e.preventDefault();
+        const main_element = e.target.parentNode.parentNode.nextSibling;
+
+        let hidden = true;
+
+        
+
+        Array.from(main_element.classList).map(el=>{
+            if(el == 'show'){
+                hidden = false
+            }
+        })
+
+        if(hidden){
+            main_element.classList.remove('hidden')
+            main_element.classList.add('show')
+        }else{
+            hidden = true;
+            main_element.classList.remove('show')
+            main_element.classList.add('hide')
+        }
+
+    }
+
+
     
 
     const check_it = async (e,parent_id,id)=>{
@@ -100,11 +127,11 @@ const Cards = ({fetchTodos, todos})=>{
         }
 
     return(
-        <div className="summary_details_container">
+        <div className="summary_details_container hide">
 
             {order_arranged.map((el,index)=>{
 
-                return <h2>{`${el.slice(0,4)}-${el.slice(4,6)}-${el.slice(6)} => ${work_combine[`${el}`]}`}</h2>
+                return <h3 key={el}>{`${el.slice(0,4)}-${el.slice(4,6)}-${el.slice(6)} => ${Math.round(work_combine[`${el}`])}`}</h3>
 
             })}
 
@@ -177,7 +204,7 @@ const Cards = ({fetchTodos, todos})=>{
                     </div>
                     <div className="summary_button_container">
         
-                        <button>Summary</button>
+                        <button onClick={(e)=>hide_show_toggler(e)}>Summary</button>
         
                     </div>
         
