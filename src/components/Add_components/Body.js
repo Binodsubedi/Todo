@@ -4,7 +4,7 @@ import backend from "../../apis/backend";
 
 const Body = ()=>{
 
-    const [tasks, setTask] = useState(["hello there man", "ok that's done and done"])
+    const [tasks, setTask] = useState([])
     const current_task = useRef("")
     const project_name = useRef("")
     
@@ -12,6 +12,11 @@ const Body = ()=>{
 
     const task_adder = (e)=>{
         e.preventDefault();
+
+        if(current_task.current.value == ""){
+            alert('Please enter something first!')
+            return
+        }
 
         setTask([...tasks, current_task.current.value])
 
@@ -26,6 +31,15 @@ const Body = ()=>{
         try{
         e.preventDefault();
 
+
+        if(project_name.current.value == ""){
+            alert('Please enter the project name first!')
+            return
+        }else if(tasks[0] == undefined ){
+            alert('Please enter the project individual tasks too!')
+            return
+        }
+
         const tasks_arrangement = tasks.map((el)=>{
             return {task: el}
         })
@@ -39,6 +53,14 @@ const Body = ()=>{
         }
 
         const response = await backend.post('/create',body)
+
+        if(response.data.status == 'success'){
+            project_name.current.value = "";
+            setTask([])
+            alert("Successfully added the todo!🥳")
+        }else{
+            alert(`${response.data.message}`)
+        }
 
     }catch(err){
 
@@ -70,6 +92,7 @@ const Body = ()=>{
                 <button id="finalize_button" onClick={(e)=>finalize_project(e)}>Finalize</button>
                 <button id="add_button" onClick={(e)=>task_adder(e)}>Add</button>
             </div>
+            
             </div>
 
             <div className="tasks_holder">

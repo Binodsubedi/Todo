@@ -131,7 +131,7 @@ const Cards = ({fetchTodos, todos})=>{
 
             {order_arranged.map((el,index)=>{
 
-                return <h3 key={el}>{`${el.slice(0,4)}-${el.slice(4,6)}-${el.slice(6)} => ${Math.round(work_combine[`${el}`])}`}</h3>
+                return <h3 key={el}>{`${el.slice(0,4)}-${el.slice(4,6)}-${el.slice(6)} => ${Math.round(work_combine[`${el}`])}%`}</h3>
 
             })}
 
@@ -139,6 +139,17 @@ const Cards = ({fetchTodos, todos})=>{
     )
 
        
+
+
+     }else{
+
+        return(
+
+        <div className="summary_details_container hide">
+
+            <h3>Nothing to show!</h3>
+
+        </div>)
 
 
      }
